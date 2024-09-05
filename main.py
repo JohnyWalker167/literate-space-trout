@@ -3,6 +3,7 @@ import time
 import asyncio
 from pyromod import listen
 from pyrogram import Client, filters, enums, types
+from pyrogram.errors import FloodWait
 from config import *
 from utils import *
 
@@ -93,7 +94,8 @@ async def pyro_task(client, message):
         new_caption = await remove_unwanted(caption)
         file_info = f"🎞️ <b>{new_caption}</b>\n\n🆔 <code>{send_msg.id}</code>"
         await app.send_photo(CAPTION_CHANNEL_ID, thumb_path, caption=file_info, has_spoiler=spoiler_settings[message.id])
-        
+    except FloodWait as f:
+        await asyncio.sleep(f.value)
     except Exception as e:
         logger.error(f'{e}')
     finally:
