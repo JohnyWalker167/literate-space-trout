@@ -90,11 +90,7 @@ async def pyro_task(client, message):
                                         progress_args=(progress_msg, last_edit_time, last_data, "Uploading"))
         await asyncio.sleep(3)
         await progress_msg.edit_text("Uploaded ✅")
-
-        new_caption = await remove_unwanted(caption)
-        file_info = f"🎞️ <b>{new_caption}</b>\n\n🆔 <code>{send_msg.id}</code>"
-        await asyncio.sleep(3)
-        await app.send_photo(CAPTION_CHANNEL_ID, thumb_path, caption=file_info, has_spoiler=spoiler_settings[message.id])
+        
     except FloodWait as f:
         await asyncio.sleep(f.value)
     except Exception as e:
