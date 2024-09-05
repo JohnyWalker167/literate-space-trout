@@ -49,6 +49,5 @@ OWNER_USERNAME = os.getenv('OWNER_USERNAME')
 OWNER_ID = int(os.getenv('OWNER_ID'))
 
 DB_CHANNEL_ID = int(os.getenv('DB_CHANNEL_ID'))
-LOG_CHANNEL_ID = int(os.getenv('LOG_CHANNEL_ID'))
 CAPTION_CHANNEL_ID = int(os.getenv('CAPTION_CHANNEL_ID'))
 
